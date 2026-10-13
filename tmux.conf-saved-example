@@ -1,0 +1,17 @@
+set -g mouse on
+
+# Shift+arrow moves between panes, no prefix needed
+bind -n S-Left  select-pane -L
+bind -n S-Right select-pane -R
+bind -n S-Up    select-pane -U
+bind -n S-Down  select-pane -D
+
+# Ctrl+Alt+Left/Right moves to the previous/next window, no prefix needed
+bind -n C-M-Left  previous-window
+bind -n C-M-Right next-window
+
+# tmux-resurrect, loaded from a local clone of my fork so fixes can be tested and pushed
+# Besides the default programs, restart ssh (same arguments) and claude (always with
+# the conversation list, "claude -r")
+set -g @resurrect-processes 'ssh "claude->claude -r"'
+run-shell ~/Media/projects/tmux-resurrect/resurrect.tmux
